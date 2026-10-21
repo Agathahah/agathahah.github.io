@@ -25,7 +25,7 @@ Cara hapus: buka file di GitHub → menu **⋯** (kanan atas) → **Delete file*
 - Tempel link di https://www.linkedin.com/post-inspector/ untuk melihat gambar preview.
 
 ## Menambah nanti
-- `assets/Agatha-Silalahi-CV.pdf` → tombol "Download CV / Unduh CV" muncul otomatis.
-- `assets/logos/bins.png`, `assets/logos/bri.png` → logo kantor muncul otomatis.
+- CV (`assets/Agatha-Silalahi-CV.pdf`) sudah disertakan, jadi tombol "Download CV / Unduh CV" akan muncul. CV ini memuat nomor HP; hapus file ini dari repo kalau tidak ingin nomor HP bisa diunduh publik.
+- Logo BI dan BRI sudah disertakan (`assets/logos/bins.png`, `assets/logos/bri.png`).
 - `assets/shots/pipeline.png`, `assets/shots/sigap.png` → screenshot proyek muncul otomatis.
 - Teks bahasa Inggris ada langsung di `index.html`; teks bahasa Indonesia ada di bagian `const ID = {` dan di data proyek `const P = [` (kolom `en` dan `id`).
