@@ -4,8 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Agatha Silalahi · Data Scientist</title>
-<meta name="description" content="Agatha Silalahi, data scientist in Jakarta. Credit risk, fraud, NLP and LLM projects, education and experience.">
+<meta name="description" content="Agatha Silalahi, data scientist in Jakarta. Credit risk, fraud, NLP and LLM projects, education and experience. Available in English and Indonesian.">
 <link rel="canonical" href="https://agathahah.github.io/">
+<link rel="alternate" hreflang="en" href="https://agathahah.github.io/?lang=en">
+<link rel="alternate" hreflang="id" href="https://agathahah.github.io/?lang=id">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Agatha Silalahi · Data Scientist">
 <meta property="og:description" content="Credit risk, fraud and LLM projects, with the numbers and how they were measured.">
@@ -17,11 +19,11 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,500&family=JetBrains+Mono:wght@400;600&display=swap">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Person","name":"Agatha Ulina Silalahi","jobTitle":"Data Scientist","url":"https://agathahah.github.io/","image":"https://agathahah.github.io/assets/photo.jpg","address":{"@type":"PostalAddress","addressLocality":"Jakarta","addressCountry":"ID"},"alumniOf":["Universitas Indonesia","Universitas Negeri Medan"],"sameAs":["https://www.linkedin.com/in/agatha-silalahi-722507215/","https://github.com/Agathahah","https://huggingface.co/Agatha1911"]}
+{"@context":"https://schema.org","@type":"Person","name":"Agatha Ulina Silalahi","jobTitle":"Data Scientist","url":"https://agathahah.github.io/","image":"https://agathahah.github.io/assets/photo.jpg","address":{"@type":"PostalAddress","addressLocality":"Jakarta","addressCountry":"ID"},"alumniOf":["Universitas Indonesia","Universitas Negeri Medan"],"knowsLanguage":["id","en"],"sameAs":["https://www.linkedin.com/in/agatha-silalahi-722507215/","https://github.com/Agathahah","https://huggingface.co/Agatha1911"]}
 </script>
 <style>
-/* Layout: a personal page read top to bottom. Wide hero with portrait, then chapters
-   (about, education, experience, projects, skills, contact) on a 1120px column. */
+/* Layout: a personal page read top to bottom. Hero with portrait, then About, Education,
+   Experience, Projects (filterable, screenshots open in a viewer), Skills, Contact. */
 :root{
   --bg:#f7f7f4; --surface:#ffffff; --ink:#111a2b; --muted:#5d6676; --line:#e3e4e0;
   --accent:#e9b500; --accent-ink:#5c4700; --accent-soft:#fff4c7; --navy:#111a2b; --ok:#1f7a4d; --ok-soft:#e2f3ea;
@@ -42,33 +44,37 @@ img{max-width:100%;display:block}
 a{color:inherit}
 h1,h2,h3{font-family:var(--f-d);line-height:1.08;letter-spacing:-.02em;margin:0;text-wrap:balance}
 p{margin:0}
+button{font-family:inherit}
 :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
 .wrap{max-width:1120px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+.progress{position:fixed;top:0;left:0;height:3px;width:0;background:var(--accent);z-index:30}
 
 /* nav */
 .nav{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 86%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid transparent;transition:border-color .2s}
 .nav.solid{border-bottom-color:var(--line)}
-.nav .wrap{display:flex;align-items:center;gap:18px;height:64px}
-.brand{font-family:var(--f-d);font-weight:800;font-size:18px;text-decoration:none;display:flex;align-items:center;gap:10px}
+.nav .wrap{display:flex;align-items:center;gap:14px;height:64px}
+.brand{font-family:var(--f-d);font-weight:800;font-size:18px;text-decoration:none;display:flex;align-items:center;gap:10px;white-space:nowrap}
 .brand i{width:30px;height:30px;border-radius:9px;background:var(--accent);color:#111a2b;display:grid;place-items:center;font-style:normal;font-size:13px}
 .nav nav{margin-left:auto;display:flex;gap:2px}
-.nav nav a{text-decoration:none;font-size:14px;font-weight:600;color:var(--muted);padding:7px 11px;border-radius:8px}
+.nav nav a{text-decoration:none;font-size:14px;font-weight:600;color:var(--muted);padding:7px 10px;border-radius:8px;white-space:nowrap}
 .nav nav a:hover,.nav nav a.on{color:var(--ink);background:var(--surface)}
-@media (max-width:820px){.nav nav{display:none}}
+.lang{display:flex;border:1px solid var(--line);border-radius:10px;padding:2px;background:var(--surface)}
+.lang button{border:0;background:transparent;color:var(--muted);font:700 12.5px var(--f-m);padding:5px 9px;border-radius:8px;cursor:pointer}
+.lang button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+@media (max-width:900px){.nav nav{display:none}.lang{margin-left:auto}}
+@media (max-width:420px){.brand span{display:none}}
 .btn{display:inline-flex;align-items:center;gap:8px;font:600 14.5px var(--f-b);text-decoration:none;padding:11px 18px;border-radius:12px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
 .btn:hover{border-color:var(--ink)}
 .btn.pri{background:var(--ink);color:var(--bg);border-color:var(--ink)}
 .btn.sm{padding:7px 13px;font-size:13.5px;border-radius:10px}
-.nav .btn{margin-left:8px}
-@media (max-width:820px){.nav .btn{margin-left:auto}}
 
 /* hero */
 .hero{padding:56px 0 72px}
 .hero .wrap{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,.9fr);gap:56px;align-items:center}
-@media (max-width:900px){.hero .wrap{grid-template-columns:minmax(0,1fr);gap:36px}.hero{padding-top:28px}}
+@media (max-width:900px){.hero .wrap{grid-template-columns:minmax(0,1fr);gap:32px}.hero{padding-top:28px}}
 .status{display:inline-flex;align-items:center;gap:8px;font-size:13.5px;font-weight:600;color:var(--muted);background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:6px 12px 6px 10px}
-.status b{width:8px;height:8px;border-radius:50%;background:#2fb36b;box-shadow:0 0 0 4px rgba(47,179,107,.18)}
+.status b{width:8px;height:8px;flex:none;border-radius:50%;background:#2fb36b;box-shadow:0 0 0 4px rgba(47,179,107,.18)}
 .hero h1{font-size:clamp(2.9rem,7vw,5.6rem);font-weight:800;margin-top:22px}
 .hero h1 span{display:block;color:var(--muted);font-weight:500;font-size:.42em;letter-spacing:-.01em;margin-top:12px}
 .hero .intro{font-size:clamp(1.08rem,1.7vw,1.25rem);color:var(--muted);max-width:56ch;margin-top:22px}
@@ -78,44 +84,44 @@ p{margin:0}
 .facts span{display:flex;gap:8px;align-items:center}
 .facts svg{width:16px;height:16px;flex:none}
 .portrait{position:relative;justify-self:center;width:min(360px,100%)}
+@media (max-width:900px){.portrait{order:-1;justify-self:start;width:min(270px,74%)}}
 .portrait .ph{aspect-ratio:4/5;border-radius:28px;overflow:hidden;background:var(--accent-soft);box-shadow:var(--shadow);position:relative}
-.portrait .ph img{width:100%;height:100%;object-fit:cover;object-position:50% 22%}
+.portrait .ph img{width:100%;height:100%;object-fit:cover;object-position:50% 18%}
 .portrait .ph .mono{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--f-d);font-weight:800;font-size:5rem;color:var(--accent-ink)}
 .portrait .ph.has-img .mono{display:none}
 .portrait .tag{position:absolute;left:-18px;bottom:28px;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:10px 14px;box-shadow:var(--shadow);font-size:13px;line-height:1.35}
 .portrait .tag b{display:block;font-size:14px}
 .portrait .tag2{left:auto;right:-14px;top:26px;bottom:auto}
-@media (max-width:900px){.portrait{order:-1;justify-self:start;width:min(260px,72%)}}
-@media (max-width:520px){.portrait .tag{left:auto;right:-10px;bottom:16px;font-size:12px}.portrait .tag2{display:none}}
+@media (max-width:520px){.portrait .tag{left:auto;right:-12px;bottom:16px;font-size:12px}.portrait .tag2{display:none}}
 
 /* sections */
 section.ch{padding:88px 0;border-top:1px solid var(--line)}
 @media (max-width:720px){section.ch{padding:64px 0}}
 .label{font-family:var(--f-m);font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:10px}
 .label::before{content:"";width:22px;height:2px;background:var(--accent)}
-section.ch h2{font-size:clamp(2rem,4.2vw,3.1rem);font-weight:800;margin-top:14px;max-width:20ch}
+section.ch h2{font-size:clamp(2rem,4.2vw,3.1rem);font-weight:800;margin-top:14px;max-width:22ch}
 .lede{color:var(--muted);font-size:1.08rem;max-width:62ch;margin-top:14px}
 
 /* about */
 .about{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:48px;margin-top:36px}
 @media (max-width:900px){.about{grid-template-columns:minmax(0,1fr)}}
 .about .txt{display:grid;gap:16px;font-size:1.06rem;max-width:62ch}
-.about .txt p:first-child::first-line{font-weight:600}
-.qf{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:6px 20px}
+.qf{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:6px 20px;margin:0;align-self:start}
 .qf div{display:grid;grid-template-columns:110px minmax(0,1fr);gap:12px;padding:12px 0;border-bottom:1px dashed var(--line);font-size:14.5px}
 .qf div:last-child{border-bottom:0}
 .qf dt{color:var(--muted)}
 .qf dd{margin:0;font-weight:600}
 
 /* education */
-.edu{margin-top:40px;display:grid;gap:0;position:relative}
+.edu{margin-top:40px;display:grid;position:relative}
 .edu::before{content:"";position:absolute;left:39px;top:20px;bottom:20px;width:2px;background:var(--line)}
 @media (max-width:600px){.edu::before{left:27px}}
 .stop{display:grid;grid-template-columns:80px minmax(0,1fr);gap:24px;padding:16px 0;position:relative}
 @media (max-width:600px){.stop{grid-template-columns:56px minmax(0,1fr);gap:14px}}
-.logo{width:80px;height:80px;border-radius:22px;background:var(--surface);border:1px solid var(--line);display:grid;place-items:center;position:relative;z-index:1;box-shadow:var(--shadow);overflow:hidden}
+.logo{margin:0;width:80px;height:80px;border-radius:22px;background:var(--surface);border:1px solid var(--line);display:grid;place-items:center;position:relative;z-index:1;box-shadow:var(--shadow);overflow:hidden}
 @media (max-width:600px){.logo{width:56px;height:56px;border-radius:16px}}
 .logo img{width:74%;height:74%;object-fit:contain}
+.logo img.wide{width:86%}
 .logo .mg{font-family:var(--f-d);font-weight:800;font-size:15px;text-align:center;line-height:1.05}
 .logo.has-img .mg{display:none}
 .logo.lt{background:#fff}
@@ -134,7 +140,7 @@ section.ch h2{font-size:clamp(2rem,4.2vw,3.1rem);font-weight:800;margin-top:14px
 .jobs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:40px}
 @media (max-width:860px){.jobs{grid-template-columns:minmax(0,1fr)}}
 .job .top{display:flex;gap:14px;align-items:center}
-.job .logo{width:56px;height:56px;border-radius:16px;box-shadow:none}
+.job .logo{width:56px;height:56px;border-radius:16px;box-shadow:none;flex:none}
 .job .co{color:var(--muted);font-size:14.5px}
 .job ul{margin:16px 0 0;padding-left:18px;display:grid;gap:8px;font-size:15.5px}
 .small{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:18px}
@@ -144,21 +150,33 @@ section.ch h2{font-size:clamp(2rem,4.2vw,3.1rem);font-weight:800;margin-top:14px
 .small span{color:var(--muted)}
 
 /* projects */
-.projects{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;margin-top:40px}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-top:28px}
+.filters button{border:1px solid var(--line);background:var(--surface);color:var(--muted);font:600 13.5px var(--f-b);padding:7px 14px;border-radius:999px;cursor:pointer}
+.filters button[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+.filters button span{font-family:var(--f-m);font-size:11.5px;opacity:.7;margin-left:4px}
+.projects{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;margin-top:22px}
 @media (max-width:900px){.projects{grid-template-columns:minmax(0,1fr)}}
-.pj{background:var(--surface);border:1px solid var(--line);border-radius:22px;overflow:hidden;display:flex;flex-direction:column}
+.pj{background:var(--surface);border:1px solid var(--line);border-radius:22px;overflow:hidden;display:flex;flex-direction:column;transition:transform .25s,box-shadow .25s}
+.pj:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
 .pj.wide{grid-column:1/-1}
 .shot{position:relative;aspect-ratio:16/9;background:var(--bg);border-bottom:1px solid var(--line);overflow:hidden}
-.pj.wide .shot{aspect-ratio:21/8}
-@media (max-width:900px){.pj.wide .shot{aspect-ratio:16/9}}
+.pj.wide .shot{aspect-ratio:2/1}
+@media (max-width:900px){.pj.wide .shot{aspect-ratio:16/10}}
+.pj .shot.short,.pj.wide .shot.short{aspect-ratio:4/1}
+@media (max-width:900px){.pj .shot.short,.pj.wide .shot.short{aspect-ratio:5/2}}
 .shot .bar{position:absolute;inset:0 0 auto;height:28px;display:flex;align-items:center;gap:6px;padding:0 12px;background:var(--surface);border-bottom:1px solid var(--line);z-index:2}
 .shot .bar i{width:9px;height:9px;border-radius:50%;background:var(--line)}
 .shot .bar span{margin-left:8px;font-family:var(--f-m);font-size:11px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.shot img{position:absolute;inset:28px 0 0;width:100%;height:calc(100% - 28px);object-fit:cover;object-position:top center;background:#fff;z-index:1}
+.shot button.zoom{all:unset;position:absolute;inset:28px 0 0;cursor:zoom-in;z-index:1;display:block}
+.shot button.zoom:focus-visible{outline:2px solid var(--accent);outline-offset:-4px}
+.shot img{width:100%;height:100%;object-fit:cover;object-position:top center;background:#fff;transition:transform .5s}
+.pj:hover .shot img{transform:scale(1.02)}
 .shot img.contain{object-fit:contain;object-position:center;padding:10px}
+.shot .hint{position:absolute;right:10px;bottom:10px;z-index:2;font-size:12px;font-weight:600;background:rgba(17,26,43,.78);color:#fff;padding:4px 10px;border-radius:999px;pointer-events:none;opacity:0;transition:opacity .2s}
+.pj:hover .shot .hint,.shot button.zoom:focus-visible~.hint{opacity:1}
 .cover{position:absolute;inset:28px 0 0;padding:22px 26px;display:flex;flex-direction:column;justify-content:space-between;gap:10px}
 .cover .big{font-family:var(--f-d);font-weight:800;font-size:clamp(2.2rem,5vw,3.4rem);line-height:1}
-.cover .big small{display:block;font-family:var(--f-b);font-size:13.5px;font-weight:500;color:var(--muted);margin-top:6px;letter-spacing:0}
+.cover .big small{display:block;font-family:var(--f-b);font-size:13.5px;font-weight:500;color:var(--muted);margin-top:6px;letter-spacing:0;max-width:40ch}
 .cover svg{width:100%;max-width:560px;height:auto;max-height:58%}
 @media (min-width:901px){.pj.wide .cover{flex-direction:row;align-items:center;gap:40px}.pj.wide .cover svg{max-width:55%;max-height:80%}}
 .cover svg text{font-family:var(--f-m);font-size:11px;fill:var(--muted)}
@@ -169,7 +187,7 @@ section.ch h2{font-size:clamp(2rem,4.2vw,3.1rem);font-weight:800;margin-top:14px
 .pj .what{color:var(--muted)}
 .nums{display:flex;flex-wrap:wrap;gap:8px 26px;margin-top:4px}
 .nums div{font-family:var(--f-d);font-weight:800;font-size:1.5rem;line-height:1.1}
-.nums small{display:block;font-family:var(--f-b);font-weight:500;font-size:12.5px;color:var(--muted);max-width:18ch;margin-top:2px;letter-spacing:0}
+.nums small{display:block;font-family:var(--f-b);font-weight:500;font-size:12.5px;color:var(--muted);max-width:19ch;margin-top:2px;letter-spacing:0}
 .stack{font-family:var(--f-m);font-size:12px;color:var(--muted)}
 details.how{border-top:1px dashed var(--line);padding-top:10px;margin-top:4px}
 details.how summary{cursor:pointer;font-weight:600;font-size:14.5px;list-style:none;display:flex;align-items:center;gap:8px}
@@ -177,13 +195,21 @@ details.how summary::-webkit-details-marker{display:none}
 details.how summary::before{content:"+";width:20px;height:20px;border-radius:6px;background:var(--bg);display:grid;place-items:center;font-family:var(--f-m)}
 details.how[open] summary::before{content:"–"}
 details.how ul{margin:10px 0 0;padding-left:18px;display:grid;gap:6px;font-size:14.5px;color:var(--muted)}
-details.how .extra{margin-top:12px;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff}
-.steps{display:grid;gap:6px;margin-top:4px}
+details.how .extra{all:unset;display:block;margin-top:12px;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff;cursor:zoom-in}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:6px;margin-top:4px}
 .steps div{display:flex;justify-content:space-between;gap:12px;font-size:14px;border:1px solid var(--line);border-radius:10px;padding:8px 12px}
 .steps em{font-style:normal;font-family:var(--f-m);font-size:11.5px;padding:1px 8px;border-radius:6px;white-space:nowrap;align-self:center}
 .steps .done{background:var(--ok-soft);color:var(--ok)}.steps .prog{background:var(--accent-soft);color:var(--accent-ink)}.steps .plan{background:var(--bg);color:var(--muted)}
 .links{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto;padding-top:8px}
 .earlier{margin-top:22px;color:var(--muted);font-size:14.5px}
+
+/* viewer */
+dialog.viewer{border:0;padding:0;background:transparent;max-width:min(1200px,94vw);width:100%;color:#fff}
+dialog.viewer::backdrop{background:rgba(8,12,20,.86)}
+dialog.viewer figure{margin:0;display:grid;gap:10px}
+dialog.viewer img{width:100%;max-height:80vh;object-fit:contain;border-radius:12px;background:#fff}
+dialog.viewer figcaption{display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:14px}
+dialog.viewer button{border:1px solid rgba(255,255,255,.35);background:transparent;color:#fff;font:600 14px var(--f-b);padding:7px 14px;border-radius:10px;cursor:pointer}
 
 /* skills */
 .skills{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:40px}
@@ -208,22 +234,28 @@ details.how .extra{margin-top:12px;border:1px solid var(--line);border-radius:12
 .social a{color:#fff;text-decoration:none;border:1px solid rgba(255,255,255,.22);border-radius:12px;padding:9px 14px;font-weight:600;font-size:14px}
 .social a:hover{border-color:#f5c518}
 footer{color:rgba(255,255,255,.55);font-size:13px;margin-top:56px;padding-top:20px;border-top:1px solid rgba(255,255,255,.12);display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
+.totop{position:fixed;right:max(18px,env(safe-area-inset-right,0px));bottom:max(18px,env(safe-area-inset-bottom,0px));z-index:15;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--surface);color:var(--ink);box-shadow:var(--shadow);cursor:pointer;font-size:18px;opacity:0;pointer-events:none;transition:opacity .25s}
+.totop.show{opacity:1;pointer-events:auto}
 
-/* reveal (content is visible by default; only enhanced when JS runs) */
+/* reveal: content stays visible without JS */
 .js .rv{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
 .js .rv.in{opacity:1;transform:none}
 </style>
 </head>
 <body>
 <script>document.documentElement.classList.add("js")</script>
+<div class="progress" id="progress"></div>
 
 <header class="nav" id="nav">
   <div class="wrap">
-    <a class="brand" href="#top"><i>AS</i>Agatha Silalahi</a>
+    <a class="brand" href="#top"><i>AS</i><span>Agatha Silalahi</span></a>
     <nav aria-label="Sections">
-      <a href="#about">About</a><a href="#education">Education</a><a href="#experience">Experience</a><a href="#projects">Projects</a><a href="#skills">Skills</a>
+      <a href="#about" data-t="nav.about">About</a><a href="#education" data-t="nav.edu">Education</a><a href="#experience" data-t="nav.exp">Experience</a><a href="#projects" data-t="nav.proj">Projects</a><a href="#skills" data-t="nav.skills">Skills</a><a href="#contact" data-t="nav.contact">Contact</a>
     </nav>
-    <a class="btn sm pri" href="#contact">Contact</a>
+    <div class="lang" role="group" aria-label="Language / Bahasa">
+      <button type="button" data-lang="en" aria-pressed="true" title="English">EN</button>
+      <button type="button" data-lang="id" aria-pressed="false" title="Bahasa Indonesia">ID</button>
+    </div>
   </div>
 </header>
 
@@ -231,39 +263,39 @@ footer{color:rgba(255,255,255,.55);font-size:13px;margin-top:56px;padding-top:20
   <section class="hero">
     <div class="wrap">
       <div>
-        <div class="status"><b></b>Data Scientist Research Assistant at Bank Indonesia Institute</div>
-        <h1>Agatha Silalahi<span>Data scientist · credit risk, fraud and NLP</span></h1>
-        <p class="intro">I'm a data scientist based in Jakarta. I build <strong>credit-risk and fraud models</strong> and <strong>LLM tools for finance</strong>, and I like every number I publish to come with the way it was measured. Before data science, I taught mathematics.</p>
+        <div class="status"><b></b><span data-t="hero.status">Data Scientist Research Assistant at Bank Indonesia Institute</span></div>
+        <h1>Agatha Silalahi<span data-t="hero.role">Data scientist · credit risk, fraud and NLP</span></h1>
+        <p class="intro" data-t="hero.intro">I'm a data scientist based in Jakarta. I build <strong>credit-risk and fraud models</strong> and <strong>LLM tools for finance</strong>, and every number I publish comes with the way it was measured. Before data science, I taught mathematics.</p>
         <div class="acts">
-          <a class="btn pri" href="#projects">See my projects ↓</a>
-          <a class="btn" href="#contact">Get in touch</a>
-          <a class="btn" id="cvbtn" href="assets/Agatha-Silalahi-CV.pdf" target="_blank" rel="noopener" hidden>Download CV</a>
+          <a class="btn pri" href="#projects" data-t="hero.cta1">See my projects ↓</a>
+          <a class="btn" href="#contact" data-t="hero.cta2">Get in touch</a>
+          <a class="btn" id="cvbtn" href="assets/Agatha-Silalahi-CV.pdf" target="_blank" rel="noopener" hidden data-t="hero.cv">Download CV</a>
         </div>
         <div class="facts">
-          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Jakarta, Indonesia</span>
-          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c3 2 9 2 12 0v-5"/></svg>M.Si. Mathematics, Universitas Indonesia</span>
-          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 5h16v11H4z"/><path d="M8 20h8M12 16v4"/></svg>Open to full-time roles</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Jakarta, Indonesia</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c3 2 9 2 12 0v-5"/></svg><span data-t="hero.f2">M.Si. Mathematics, Universitas Indonesia</span></span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 5h16v11H4z"/><path d="M8 20h8M12 16v4"/></svg><span data-t="hero.f3">Open to full-time roles</span></span>
         </div>
       </div>
       <div class="portrait">
-        <div class="ph" id="ph"><img src="assets/photo.jpg" alt="Agatha Silalahi at her master's graduation" onload="this.parentNode.classList.add('has-img')" onerror="this.remove()"><span class="mono">AS</span></div>
-        <div class="tag"><b>6 public projects</b>credit risk · fraud · RAG</div>
-        <div class="tag tag2"><b>Since 2020</b>math tutor</div>
+        <div class="ph"><img src="assets/photo.jpg" alt="Agatha Silalahi" onload="this.parentNode.classList.add('has-img')" onerror="this.remove()"><span class="mono">AS</span></div>
+        <div class="tag" data-t="hero.tag1"><b>6 public projects</b>credit risk · fraud · RAG</div>
+        <div class="tag tag2" data-t="hero.tag2"><b>Since 2020</b>math tutor</div>
       </div>
     </div>
   </section>
 
   <section class="ch" id="about">
     <div class="wrap">
-      <div class="label rv">About</div>
-      <h2 class="rv">From the classroom to credit models.</h2>
+      <div class="label rv" data-t="nav.about">About</div>
+      <h2 class="rv" data-t="about.h">From the classroom to credit models.</h2>
       <div class="about">
-        <div class="txt rv">
-          <p>I studied mathematics education in Medan and spent several years teaching mathematics, in Indonesian and in English. Teaching taught me to explain a hard idea three different ways until it lands.</p>
-          <p>I then took a master's in mathematics with a data science specialization at Universitas Indonesia. Today I work at Bank Indonesia Institute, using NLP to study how clearly the central bank communicates, and I spent six months at BRI building a resume parser with an LLM.</p>
-          <p>In my own projects I focus on credit risk, fraud and LLM tools for finance. I start with a simple baseline, split data by time, and write down release criteria before training, so that results can be checked by anyone who opens the repository.</p>
+        <div class="txt rv" data-t="about.txt">
+          <p>I studied mathematics education in Medan and spent several years teaching mathematics, in Indonesian and in English. Teaching taught me to explain a hard idea in more than one way until it lands.</p>
+          <p>I then completed a master's in mathematics with a data science specialization at Universitas Indonesia. Today I work at Bank Indonesia Institute, using NLP to study how clearly the central bank communicates. Before that, I spent six months at BRI building an LLM-based resume parser.</p>
+          <p>In my own projects I focus on credit risk, fraud and LLM tools for finance. I start with a simple baseline, split data by time, and write down release criteria before training, so that anyone who opens the repository can check the results.</p>
         </div>
-        <dl class="qf rv">
+        <dl class="qf rv" data-t="about.qf">
           <div><dt>Now</dt><dd>Bank Indonesia Institute (BINS)</dd></div>
           <div><dt>Focus</dt><dd>Credit risk, fraud, NLP, LLM/RAG</dd></div>
           <div><dt>Tools</dt><dd>Python, SQL, R, XGBoost, PySpark</dd></div>
@@ -276,34 +308,34 @@ footer{color:rgba(255,255,255,.55);font-size:13px;margin-top:56px;padding-top:20
 
   <section class="ch" id="education">
     <div class="wrap">
-      <div class="label rv">Education</div>
-      <h2 class="rv">Where I learned.</h2>
-      <p class="lede rv">Mathematics first, then data science and engineering practice.</p>
+      <div class="label rv" data-t="nav.edu">Education</div>
+      <h2 class="rv" data-t="edu.h">Where I learned.</h2>
+      <p class="lede rv" data-t="edu.lede">Mathematics first, then data science and engineering practice.</p>
       <div class="edu">
         <div class="stop rv">
-          <figure class="logo lt" style="margin:0"><img src="assets/logos/ui.png" alt="Universitas Indonesia logo" onload="this.parentNode.classList.add('has-img')" onerror="this.remove()"><span class="mg">UI</span></figure>
-          <div class="card"><div class="when">Aug 2023 – Oct 2025 · Depok</div><h3>Universitas Indonesia</h3>
-            <div class="deg">Master of Mathematics (M.Si.), Data Science specialization <span class="gpa">GPA 3.61</span></div>
+          <figure class="logo lt"><img src="assets/logos/ui.png" alt="Universitas Indonesia" onload="this.parentNode.classList.add('has-img')" onerror="this.remove()"><span class="mg">UI</span></figure>
+          <div class="card"><div class="when" data-t="edu.ui.when">Aug 2023 – Oct 2025 · Depok</div><h3>Universitas Indonesia</h3>
+            <div class="deg"><span data-t="edu.ui.deg">Master of Mathematics (M.Si.), Data Science specialization</span> <span class="gpa">GPA 3.61</span></div>
             <div class="chips"><span class="chip">Advanced Machine Learning</span><span class="chip">Applied Deep Learning</span><span class="chip">Advanced Statistical Analysis</span><span class="chip">Computational Data Science</span><span class="chip">Data Exploration &amp; Visualization</span><span class="chip">Genomic Data Science</span></div>
-            <p class="gave"><b>Thesis:</b> imputing missing values in glioma gene-expression data with KMB-AE.</p></div>
+            <p class="gave" data-t="edu.ui.thesis"><b>Thesis:</b> imputing missing values in glioma gene-expression data with KMB-AE.</p></div>
         </div>
         <div class="stop rv">
-          <figure class="logo" style="margin:0"><img src="assets/logos/pacmann.png" alt="Pacmann Academy logo" onload="this.parentNode.classList.add('has-img')" onerror="this.remove()"><span class="mg">PAC</span></figure>
-          <div class="card"><div class="when">2023 – 2025 · non-degree</div><h3>Pacmann Academy</h3>
+          <figure class="logo lt"><img src="assets/logos/pacmann.png" alt="Pacmann Academy" onload="this.parentNode.classList.add('has-img')" onerror="this.remove()"><span class="mg">PAC</span></figure>
+          <div class="card"><div class="when" data-t="edu.pac.when">2023 – 2025 · non-degree</div><h3>Pacmann Academy</h3>
             <div class="deg">Job Preparation Program: AI/ML Engineer</div>
-            <div class="chips"><span class="chip">Software engineering in Python</span><span class="chip">Probability &amp; statistical testing</span><span class="chip">APIs &amp; deployment</span><span class="chip">Recommender systems</span><span class="chip">NLP</span><span class="chip">ML product management</span></div></div>
+            <div class="chips" data-t="edu.pac.chips"><span class="chip">Software engineering in Python</span><span class="chip">Probability &amp; statistical testing</span><span class="chip">APIs &amp; deployment</span><span class="chip">Recommender systems</span><span class="chip">NLP</span><span class="chip">ML product management</span></div></div>
         </div>
         <div class="stop rv">
-          <figure class="logo" style="margin:0"><img src="assets/logos/dqlab.png" alt="DQLab logo" onload="this.parentNode.classList.add('has-img')" onerror="this.remove()"><span class="mg">DQ</span></figure>
+          <figure class="logo lt"><img class="wide" src="assets/logos/dqlab.png" alt="DQLab" onload="this.parentNode.classList.add('has-img')" onerror="this.remove()"><span class="mg">DQ</span></figure>
           <div class="card"><div class="when">Bootcamp</div><h3>DQLab</h3>
             <div class="deg">Data Analyst with SQL &amp; Python in Google Platform, Batch 8</div>
-            <p class="gave">SQL, Python, Looker Studio storytelling and an ARIMA forecasting capstone.</p></div>
+            <p class="gave" data-t="edu.dq.txt">SQL, Python, Looker Studio storytelling and an ARIMA forecasting capstone.</p></div>
         </div>
         <div class="stop rv">
-          <figure class="logo lt" style="margin:0"><img src="assets/logos/unimed.png" alt="Universitas Negeri Medan logo" onload="this.parentNode.classList.add('has-img')" onerror="this.remove()"><span class="mg">UNI<br>MED</span></figure>
+          <figure class="logo lt"><img src="assets/logos/unimed.png" alt="Universitas Negeri Medan" onload="this.parentNode.classList.add('has-img')" onerror="this.remove()"><span class="mg">UNI<br>MED</span></figure>
           <div class="card"><div class="when">2017 – 2021 · Medan</div><h3>Universitas Negeri Medan</h3>
-            <div class="deg">Bachelor of Mathematics Education (S.Pd.), FMIPA <span class="gpa">GPA 3.53</span></div>
-            <p class="gave">Proof-based thinking, statistics, and how to teach.</p></div>
+            <div class="deg"><span data-t="edu.um.deg">Bachelor of Mathematics Education (S.Pd.), FMIPA</span> <span class="gpa">GPA 3.53</span></div>
+            <p class="gave" data-t="edu.um.txt">Proof-based thinking, statistics, and how to teach.</p></div>
         </div>
       </div>
     </div>
@@ -311,28 +343,28 @@ footer{color:rgba(255,255,255,.55);font-size:13px;margin-top:56px;padding-top:20
 
   <section class="ch" id="experience">
     <div class="wrap">
-      <div class="label rv">Experience</div>
-      <h2 class="rv">Work in Indonesian finance.</h2>
+      <div class="label rv" data-t="nav.exp">Experience</div>
+      <h2 class="rv" data-t="exp.h">Work in Indonesian finance.</h2>
       <div class="jobs">
         <article class="card job rv">
-          <div class="top"><figure class="logo" style="margin:0"><img src="assets/logos/bins.png" alt="Bank Indonesia Institute logo" onload="this.parentNode.classList.add('has-img')" onerror="this.remove()"><span class="mg">BI</span></figure>
-            <div><div class="when">Mar 2025 – present</div><h3>Data Scientist Research Assistant</h3><div class="co">Bank Indonesia Institute (BINS)</div></div></div>
-          <ul>
-            <li>NLP pipelines that score Bank Indonesia press releases and related news for clarity, sentiment and coverage, for research on central bank communication.</li>
-            <li>Sentiment labelling that combines lexicons, machine learning classifiers and manual annotation of financial news.</li>
-            <li>Topic modelling and time series of inflation and exchange-rate themes, as input to an early warning indicator.</li>
+          <div class="top"><figure class="logo"><img src="assets/logos/bins.png" alt="Bank Indonesia Institute" onload="this.parentNode.classList.add('has-img')" onerror="this.remove()"><span class="mg">BI</span></figure>
+            <div><div class="when" data-t="exp.bins.when">Mar 2025 – present</div><h3>Data Scientist Research Assistant</h3><div class="co">Bank Indonesia Institute (BINS)</div></div></div>
+          <ul data-t="exp.bins.ul">
+            <li>Build NLP pipelines that score Bank Indonesia press releases and related news for clarity, sentiment and coverage, for research on central bank communication.</li>
+            <li>Label sentiment in financial news by combining lexicons, machine learning classifiers and manual annotation.</li>
+            <li>Apply topic modelling and time series analysis to inflation and exchange-rate themes, as input to an early warning indicator.</li>
           </ul>
         </article>
         <article class="card job rv">
-          <div class="top"><figure class="logo" style="margin:0"><img src="assets/logos/bri.png" alt="BRI logo" onload="this.parentNode.classList.add('has-img')" onerror="this.remove()"><span class="mg">BRI</span></figure>
-            <div><div class="when">Aug 2024 – Jan 2025</div><h3>AI Research Intern</h3><div class="co">PT Bank Rakyat Indonesia (Persero) Tbk</div></div></div>
-          <ul>
-            <li>Built a prototype resume parser: an internal LLM prompted with a fixed JSON schema at temperature 0 extracts name, contact, education, skills and work history, served through a Flask app.</li>
-            <li>Turned unstructured CVs into records HR could filter and compare. The <a href="https://github.com/Agathahah/Resume-parser-LLM-BRI" target="_blank" rel="noopener">public version</a> uses synthetic data only.</li>
+          <div class="top"><figure class="logo"><img src="assets/logos/bri.png" alt="BRI" onload="this.parentNode.classList.add('has-img')" onerror="this.remove()"><span class="mg">BRI</span></figure>
+            <div><div class="when" data-t="exp.bri.when">Aug 2024 – Jan 2025</div><h3>AI Research Intern</h3><div class="co">PT Bank Rakyat Indonesia (Persero) Tbk</div></div></div>
+          <ul data-t="exp.bri.ul">
+            <li>Built a prototype resume parser: an internal LLM, prompted with a fixed JSON schema at temperature 0, extracts name, contact details, education, skills and work history, served through a Flask app.</li>
+            <li>Turned unstructured CVs into records that HR could filter and compare. The <a href="https://github.com/Agathahah/Resume-parser-LLM-BRI" target="_blank" rel="noopener">public version</a> uses synthetic data only.</li>
           </ul>
         </article>
       </div>
-      <div class="small rv">
+      <div class="small rv" data-t="exp.small">
         <div><b>Mathematics Teacher</b><span>SMA Global Mandiri Cibubur · 2022–2023</span></div>
         <div><b>Bilingual Mathematics Teacher (substitute)</b><span>SMPK Penabur Gading Serpong · 2022</span></div>
         <div><b>Private Mathematics Tutor</b><span>2020 – present</span></div>
@@ -342,148 +374,267 @@ footer{color:rgba(255,255,255,.55);font-size:13px;margin-top:56px;padding-top:20
 
   <section class="ch" id="projects">
     <div class="wrap">
-      <div class="label rv">Projects</div>
-      <h2 class="rv">Things I've built.</h2>
-      <p class="lede rv">Each project has a public repository. Open "How it was measured" for the evaluation behind each number.</p>
+      <div class="label rv" data-t="nav.proj">Projects</div>
+      <h2 class="rv" data-t="proj.h">Things I've built.</h2>
+      <p class="lede rv" data-t="proj.lede">Every project has a public repository. Open "How it was measured" to see the evaluation behind each number, and click a screenshot to enlarge it.</p>
+      <div class="filters rv" id="filters" role="group" aria-label="Filter projects"></div>
       <div class="projects" id="plist"></div>
-      <p class="earlier rv">Earlier work: BERT fine-tuning for text classification · insurance cost prediction with XGBoost · stress-cause clustering on the COVID Stress Global Survey · ARIMA sales forecasting.</p>
+      <p class="earlier rv" data-t="proj.earlier">Earlier work: BERT fine-tuning for text classification · insurance cost prediction with XGBoost · stress-cause clustering on the COVID Stress Global Survey · ARIMA sales forecasting.</p>
     </div>
   </section>
 
   <section class="ch" id="skills">
     <div class="wrap">
-      <div class="label rv">Skills</div>
-      <h2 class="rv">What I work with.</h2>
-      <div class="skills">
-        <div class="card rv"><h3>Modelling &amp; evaluation</h3><div class="chips"><span class="chip">XGBoost · LightGBM · scikit-learn</span><span class="chip">Credit risk metrics (KS, Gini, PSI)</span><span class="chip">Calibration</span><span class="chip">SHAP</span><span class="chip">Time-based validation</span><span class="chip">Fairness checks</span><span class="chip">Statistics &amp; hypothesis testing</span><span class="chip lrn">Fraud detection</span></div></div>
-        <div class="card rv"><h3>NLP &amp; LLM</h3><div class="chips"><span class="chip">RAG (BM25, embeddings, ChromaDB)</span><span class="chip">LLM evaluation with golden sets</span><span class="chip">Claude API &amp; prompt design</span><span class="chip">Sentiment &amp; topic modelling</span><span class="chip">BERT fine-tuning</span><span class="chip lrn">MCP servers</span><span class="chip lrn">LangGraph agents</span></div></div>
-        <div class="card rv"><h3>Data</h3><div class="chips"><span class="chip">SQL (PostgreSQL, CTEs, window functions)</span><span class="chip">dbt</span><span class="chip">ETL pipelines</span><span class="chip">BigQuery</span><span class="chip">Tableau · Looker Studio</span><span class="chip lrn">PySpark</span><span class="chip lrn">Airflow</span></div></div>
-        <div class="card rv"><h3>Engineering</h3><div class="chips"><span class="chip">Python · R</span><span class="chip">FastAPI · Flask</span><span class="chip">Docker</span><span class="chip">pytest + GitHub Actions</span><span class="chip">Hugging Face Spaces · Streamlit</span><span class="chip lrn">MLflow</span><span class="chip lrn">Kubernetes (local)</span></div></div>
-      </div>
-      <p class="legend rv">Dashed outline: currently learning or in progress (SIGAP, November 2026).</p>
+      <div class="label rv" data-t="nav.skills">Skills</div>
+      <h2 class="rv" data-t="skills.h">What I work with.</h2>
+      <div class="skills" id="skills-list"></div>
+      <p class="legend rv" data-t="skills.legend">Dashed outline: currently learning or in progress (SIGAP, November 2026).</p>
     </div>
   </section>
 
   <section class="ch contact" id="contact">
     <div class="wrap">
-      <div class="label">Contact</div>
-      <h2>Let's <em>talk</em>.</h2>
-      <p class="lede">I'm open to full-time data scientist, ML engineer and AI engineer roles, in Jakarta or remote. I'm always happy to talk about credit risk, fraud, NLP or teaching mathematics.</p>
-      <div class="mail"><span id="em">silalahiagatha15@gmail.com</span><button type="button" id="copy">Copy email</button></div>
+      <div class="label" data-t="nav.contact">Contact</div>
+      <h2 data-t="contact.h">Let's <em>talk</em>.</h2>
+      <p class="lede" data-t="contact.lede">I'm open to full-time data scientist, ML engineer and AI engineer roles, in Jakarta or remote. I'm also happy to talk about credit risk, fraud, NLP or teaching mathematics.</p>
+      <div class="mail"><span id="em">silalahiagatha15@gmail.com</span><button type="button" id="copy" data-t="contact.copy">Copy email</button></div>
       <div class="social">
         <a href="https://www.linkedin.com/in/agatha-silalahi-722507215/" target="_blank" rel="noopener">LinkedIn ↗</a>
         <a href="https://github.com/Agathahah" target="_blank" rel="noopener">GitHub ↗</a>
         <a href="https://huggingface.co/Agatha1911" target="_blank" rel="noopener">Hugging Face ↗</a>
         <a href="https://public.tableau.com/app/profile/agatha.silalahi" target="_blank" rel="noopener">Tableau ↗</a>
       </div>
-      <footer><span>© 2026 Agatha Ulina Silalahi · Jakarta</span><span>Built with plain HTML, hosted on GitHub Pages</span></footer>
+      <footer><span>© 2026 Agatha Ulina Silalahi · Jakarta</span><span data-t="contact.foot">Built with plain HTML, hosted on GitHub Pages</span></footer>
     </div>
   </section>
 </main>
 
+<button class="totop" id="totop" type="button" aria-label="Back to top">↑</button>
+
+<dialog class="viewer" id="viewer">
+  <figure><img id="vimg" alt=""><figcaption><span id="vcap"></span><button type="button" id="vclose" data-t="viewer.close">Close</button></figcaption></figure>
+</dialog>
+
 <script>
+/* ---------- Indonesian text (English is read from the page itself) ---------- */
+const ID = {
+  "nav.about":"Tentang","nav.edu":"Pendidikan","nav.exp":"Pengalaman","nav.proj":"Proyek","nav.skills":"Keahlian","nav.contact":"Kontak",
+  "hero.status":"Data Scientist Research Assistant di Bank Indonesia Institute",
+  "hero.role":"Data scientist · risiko kredit, fraud, dan NLP",
+  "hero.intro":"Saya seorang data scientist yang berdomisili di Jakarta. Saya membangun <strong>model risiko kredit dan deteksi fraud</strong> serta <strong>aplikasi LLM untuk sektor keuangan</strong>, dan setiap angka yang saya publikasikan selalu disertai cara pengukurannya. Sebelum menekuni data science, saya mengajar matematika.",
+  "hero.cta1":"Lihat proyek saya ↓","hero.cta2":"Hubungi saya","hero.cv":"Unduh CV",
+  "hero.f2":"M.Si. Matematika, Universitas Indonesia","hero.f3":"Terbuka untuk posisi penuh waktu",
+  "hero.tag1":"<b>6 proyek publik</b>risiko kredit · fraud · RAG","hero.tag2":"<b>Sejak 2020</b>tutor matematika",
+  "about.h":"Dari ruang kelas ke model kredit.",
+  "about.txt":"<p>Saya menempuh pendidikan matematika di Medan dan beberapa tahun mengajar matematika dalam bahasa Indonesia dan bahasa Inggris. Dari mengajar, saya belajar menjelaskan konsep yang sulit dengan lebih dari satu cara hingga benar-benar dipahami.</p><p>Setelah itu, saya menyelesaikan S2 Matematika dengan peminatan data science di Universitas Indonesia. Saat ini saya bekerja di Bank Indonesia Institute, memanfaatkan NLP untuk meneliti kejelasan komunikasi bank sentral. Sebelumnya, selama enam bulan di BRI, saya membangun parser CV berbasis LLM.</p><p>Dalam proyek pribadi, saya berfokus pada risiko kredit, fraud, dan aplikasi LLM untuk keuangan. Saya selalu memulai dari baseline sederhana, membagi data berdasarkan waktu, dan menetapkan kriteria rilis sebelum melatih model, sehingga siapa pun yang membuka repositorinya dapat memeriksa hasilnya.</p>",
+  "about.qf":"<div><dt>Saat ini</dt><dd>Bank Indonesia Institute (BINS)</dd></div><div><dt>Fokus</dt><dd>Risiko kredit, fraud, NLP, LLM/RAG</dd></div><div><dt>Tools</dt><dd>Python, SQL, R, XGBoost, PySpark</dd></div><div><dt>Bahasa</dt><dd>Indonesia, Inggris</dd></div><div><dt>Lainnya</dt><dd>Tutor privat matematika sejak 2020</dd></div>",
+  "edu.h":"Tempat saya belajar.","edu.lede":"Berawal dari matematika, lalu data science dan praktik engineering.",
+  "edu.ui.when":"Agu 2023 – Okt 2025 · Depok","edu.ui.deg":"Magister Matematika (M.Si.), peminatan Data Science",
+  "edu.ui.thesis":"<b>Tesis:</b> imputasi nilai hilang pada data ekspresi gen glioma dengan metode KMB-AE.",
+  "edu.pac.when":"2023 – 2025 · program nongelar",
+  "edu.pac.chips":"<span class=\"chip\">Rekayasa perangkat lunak dengan Python</span><span class=\"chip\">Probabilitas &amp; uji statistik</span><span class=\"chip\">API &amp; deployment</span><span class=\"chip\">Sistem rekomendasi</span><span class=\"chip\">NLP</span><span class=\"chip\">Manajemen produk ML</span>",
+  "edu.dq.txt":"SQL, Python, storytelling dengan Looker Studio, dan proyek akhir peramalan dengan ARIMA.",
+  "edu.um.deg":"Sarjana Pendidikan Matematika (S.Pd.), FMIPA","edu.um.txt":"Berpikir berbasis pembuktian, statistika, dan cara mengajar.",
+  "exp.h":"Berkarier di sektor keuangan Indonesia.",
+  "exp.bins.when":"Mar 2025 – sekarang","exp.bri.when":"Agu 2024 – Jan 2025",
+  "exp.bins.ul":"<li>Membangun pipeline NLP untuk menilai kejelasan, sentimen, dan cakupan siaran pers Bank Indonesia serta berita terkait, sebagai bahan riset komunikasi bank sentral.</li><li>Melakukan pelabelan sentimen berita keuangan dengan menggabungkan leksikon, classifier machine learning, dan anotasi manual.</li><li>Menerapkan topic modelling dan analisis deret waktu pada tema inflasi dan nilai tukar sebagai masukan indikator peringatan dini.</li>",
+  "exp.bri.ul":"<li>Membangun prototipe parser CV: LLM internal diberi prompt dengan skema JSON tetap pada temperature 0 untuk mengekstrak nama, kontak, pendidikan, keahlian, dan riwayat kerja, lalu disajikan melalui aplikasi Flask.</li><li>Mengubah CV yang tidak terstruktur menjadi data yang dapat disaring dan dibandingkan oleh tim HR. <a href=\"https://github.com/Agathahah/Resume-parser-LLM-BRI\" target=\"_blank\" rel=\"noopener\">Versi publiknya</a> hanya menggunakan data sintetis.</li>",
+  "exp.small":"<div><b>Guru Matematika</b><span>SMA Global Mandiri Cibubur · 2022–2023</span></div><div><b>Guru Matematika Bilingual (pengganti)</b><span>SMPK Penabur Gading Serpong · 2022</span></div><div><b>Tutor Privat Matematika</b><span>2020 – sekarang</span></div>",
+  "proj.h":"Proyek yang saya bangun.",
+  "proj.lede":"Setiap proyek memiliki repositori publik. Buka \"Cara pengukurannya\" untuk melihat evaluasi di balik setiap angka, dan klik screenshot untuk memperbesarnya.",
+  "proj.earlier":"Proyek sebelumnya: fine-tuning BERT untuk klasifikasi teks · prediksi biaya asuransi dengan XGBoost · klasterisasi penyebab stres pada COVID Stress Global Survey · peramalan penjualan dengan ARIMA.",
+  "skills.h":"Keahlian yang saya gunakan.","skills.legend":"Garis putus-putus: sedang dipelajari atau masih dalam pengerjaan (SIGAP, November 2026).",
+  "contact.h":"Mari <em>berdiskusi</em>.",
+  "contact.lede":"Saya terbuka untuk posisi penuh waktu sebagai data scientist, ML engineer, maupun AI engineer, di Jakarta atau secara remote. Saya juga senang berdiskusi tentang risiko kredit, fraud, NLP, atau pengajaran matematika.",
+  "contact.copy":"Salin email","contact.foot":"Dibuat dengan HTML, di-hosting di GitHub Pages","viewer.close":"Tutup"
+};
+const UI = {
+  en:{how:"How it was measured", all:"All", zoom:"Click to enlarge", copied:"Copied", select:"Selected, press Ctrl/Cmd+C", title:"Agatha Silalahi · Data Scientist", top:"Back to top"},
+  id:{how:"Cara pengukurannya", all:"Semua", zoom:"Klik untuk memperbesar", copied:"Tersalin", select:"Sudah dipilih, tekan Ctrl/Cmd+C", title:"Agatha Silalahi · Data Scientist", top:"Kembali ke atas"}
+};
+const CATS = [["credit",{en:"Credit risk",id:"Risiko kredit"}],["fraud",{en:"Fraud",id:"Fraud"}],["llm",{en:"LLM & NLP",id:"LLM & NLP"}],["data",{en:"Data & analytics",id:"Data & analitik"}]];
+
+/* ---------- projects ---------- */
 const P = [
-  {id:"finsight", name:"FinSight IDX", kind:"LLM · RAG", date:"2026", wide:true,
-   url:"agatha1911-finsight-idx.hf.space",
-   what:"Ask a question about the BCA 2023 annual report (747 pages) and get an answer with the page every figure came from.",
-   nums:[["79%","answers correct (65% before)"],["91%","cite the right page"],["≈$0.01","per question"]],
-   cover:{big:"0.70",cap:"page recall of the live index, up from 0.30",rows:[["v2 hybrid k=5",.30],["v3 hybrid k=5",.40],["v4 table rows",.58],["v4 BM25 k=10",.70]]},
-   how:["A golden set of 58 questions, with answers and pages checked by hand in the PDF.","Auditing my own index found duplicate chunks, wrong page numbers and skipped text; fixed with regression tests and a versioned index manifest.","Refuses questions the report cannot answer. Rate limits, a daily cost ceiling, and telemetry without question text; 220 tests in CI."],
+  {id:"finsight", wide:true, cats:["llm"], url:"huggingface.co/spaces/Agatha1911/finsight-idx", img:"assets/shots/finsight.png", date:"2026",
+   name:"FinSight IDX", kind:{en:"LLM · RAG",id:"LLM · RAG"},
+   what:{en:"Ask a question about the BCA 2023 annual report (747 pages) and get an answer with the page every figure came from.",
+         id:"Ajukan pertanyaan tentang laporan tahunan BCA 2023 (747 halaman) dan dapatkan jawaban beserta halaman sumber setiap angkanya."},
+   nums:[["79%",{en:"answers correct (65% before)",id:"jawaban benar (sebelumnya 65%)"}],["91%",{en:"cite the right page",id:"menyebut halaman yang tepat"}],["≈$0.01",{en:"per question",id:"per pertanyaan"}]],
+   cover:{big:"0.70",cap:{en:"page recall of the live index, up from 0.30",id:"page recall indeks live, naik dari 0,30"},rows:[["v2 hybrid k=5",.30],["v3 hybrid k=5",.40],["v4 table rows",.58],["v4 BM25 k=10",.70]]},
+   how:{en:["A golden set of 58 questions, with answers and pages checked by hand in the PDF.","Auditing my own index found duplicate chunks, wrong page numbers and skipped text; fixed with regression tests and a versioned index manifest.","Refuses questions the report cannot answer. Rate limits, a daily cost ceiling and telemetry that never stores question text; 220 tests in CI."],
+        id:["Golden set berisi 58 pertanyaan; jawaban dan halamannya diperiksa manual pada PDF.","Audit terhadap indeks sendiri menemukan chunk ganda, nomor halaman yang keliru, dan teks yang terlewat; diperbaiki dengan regression test dan manifest indeks berversi.","Menolak pertanyaan yang tidak dapat dijawab dari laporan. Dilengkapi rate limit, batas biaya harian, dan telemetri tanpa menyimpan isi pertanyaan; 220 test berjalan di CI."]},
    stack:"Python · Claude API · BM25 · ChromaDB · Tesseract · Gradio · Docker",
-   links:[["Live demo","https://huggingface.co/spaces/Agatha1911/finsight-idx",1],["Repository","https://github.com/Agathahah/finsight-idx"]]},
-  {id:"ews", name:"Credit Default EWS", kind:"Credit risk", date:"2026",
-   url:"github.com/Agathahah/credit-default-ews", img:"assets/shots/ews-evaluation.png", contain:true,
-   what:"An early warning model for loan default on 307,511 Home Credit applications, calibrated so scores can feed expected-loss estimates.",
-   nums:[["0.763","ROC-AUC (logistic 0.745)"],["52%","of defaults in the top 20% of scores"]],
-   how:["The default rate is 8.1%, so PR-AUC and capture rate are reported next to ROC-AUC.","Gender was removed from the features, and the cost in accuracy was measured.","A PSI drift detector, tested on simulated drift."],
-   extra:"assets/shots/ews-shap.png", extraAlt:"SHAP summary plot for 2,000 test applicants",
+   links:[[{en:"Live demo",id:"Demo langsung"},"https://huggingface.co/spaces/Agatha1911/finsight-idx",1],[{en:"Repository",id:"Repositori"},"https://github.com/Agathahah/finsight-idx"]]},
+  {id:"ews", cats:["credit"], url:"github.com/Agathahah/credit-default-ews", img:"assets/shots/ews-evaluation.png", contain:true, date:"2026",
+   name:"Credit Default EWS", kind:{en:"Credit risk",id:"Risiko kredit"},
+   what:{en:"An early warning model for loan default on 307,511 Home Credit applications, calibrated so scores can feed expected-loss estimates.",
+         id:"Model peringatan dini gagal bayar pada 307.511 aplikasi Home Credit, dikalibrasi agar skornya dapat digunakan untuk menghitung expected loss."},
+   nums:[[{en:"0.763",id:"0,763"},{en:"ROC-AUC (logistic 0.745)",id:"ROC-AUC (logistic 0,745)"}],["52%",{en:"of defaults in the top 20% of scores",id:"gagal bayar tertangkap di 20% skor tertinggi"}]],
+   how:{en:["The default rate is 8.1%, so PR-AUC and capture rate are reported next to ROC-AUC.","Gender was removed from the features, and the cost in accuracy was measured.","A PSI drift detector, tested on simulated drift."],
+        id:["Tingkat gagal bayar 8,1%, sehingga PR-AUC dan capture rate dilaporkan bersama ROC-AUC.","Variabel gender dikeluarkan dari fitur, dan dampaknya terhadap akurasi diukur.","Detektor drift berbasis PSI, diuji dengan simulasi drift."]},
+   extra:"assets/shots/ews-shap.png", extraAlt:{en:"SHAP summary plot for 2,000 test applicants",id:"Plot ringkasan SHAP untuk 2.000 pemohon pada data test"},
    stack:"Python · XGBoost · SHAP · scikit-learn",
-   links:[["Repository","https://github.com/Agathahah/credit-default-ews"]]},
-  {id:"creditlens", name:"CreditLens", kind:"Credit risk", date:"2026",
-   url:"creditlens-risk-evidence.streamlit.app",
-   what:"Credit scoring research on 2.26 million LendingClub loans in PostgreSQL and dbt, with a release gate written before training.",
-   nums:[["2.26M","loans"],["0.220","average precision vs a 0.25 gate"],["158","automated tests"]],
-   cover:{big:"0.220",cap:"best model's average precision; the 0.25 gate was not met, so it was not released",rows:[["Best model",.220]],max:.3,gate:.25,dec:3},
-   how:["The gate was fixed before training; the best model missed it and was held back.","The FastAPI service refuses unreleased models.","The public Streamlit dashboard shows only aggregates."],
+   links:[[{en:"Repository",id:"Repositori"},"https://github.com/Agathahah/credit-default-ews"]]},
+  {id:"creditlens", cats:["credit","data"], url:"creditlens-risk-evidence.streamlit.app", img:"assets/shots/creditlens.png", date:"2026",
+   name:"CreditLens", kind:{en:"Credit risk",id:"Risiko kredit"},
+   what:{en:"Credit scoring research on 2.26 million LendingClub loans in PostgreSQL and dbt, with a release gate written before training.",
+         id:"Riset credit scoring pada 2,26 juta pinjaman LendingClub dengan PostgreSQL dan dbt, dilengkapi release gate yang ditetapkan sebelum pelatihan model."},
+   nums:[[{en:"2.26M",id:"2,26 jt"},{en:"loans",id:"pinjaman"}],[{en:"0.220",id:"0,220"},{en:"average precision vs a 0.25 gate",id:"average precision vs gate 0,25"}],["158",{en:"automated tests",id:"test otomatis"}]],
+   cover:{big:"0.220",cap:{en:"best model's average precision; the 0.25 gate was not met, so it was not released",id:"average precision model terbaik; gate 0,25 tidak tercapai sehingga model tidak dirilis"},rows:[["Best model",.220]],max:.3,gate:.25,dec:3},
+   how:{en:["The gate was fixed before training; the best model missed it and was held back.","The FastAPI service refuses unreleased models.","The public Streamlit dashboard shows only aggregates."],
+        id:["Gate ditetapkan sebelum pelatihan; model terbaik tidak lolos sehingga tidak dirilis.","Layanan FastAPI menolak model yang belum dirilis.","Dashboard Streamlit publik hanya menampilkan data agregat."]},
    stack:"PostgreSQL · dbt · XGBoost · FastAPI · Streamlit",
-   links:[["Dashboard","https://creditlens-risk-evidence.streamlit.app/",1],["Repository","https://github.com/Agathahah/creditlens"]]},
-  {id:"pipeline", name:"Credit risk data pipeline", kind:"Data engineering", date:"2025",
-   url:"github.com/Agathahah/credit-data-pipeline",
-   what:"A five-stage ETL for 150,000 borrowers that produces the same metrics on PostgreSQL and SQLite.",
-   nums:[["0.866","ROC-AUC (logistic 0.857)"],["0.579","KS"],["11","tests + CI"]],
-   cover:{big:"0.579",cap:"KS on the test set",rows:[["ROC-AUC XGBoost",.866],["ROC-AUC logistic",.857],["PR-AUC XGBoost",.394],["PR-AUC logistic",.360]],hi:0,dec:3},
-   how:["Early stopping uses a validation split, never the test set.","A World Bank macro join added nothing (the data has no dates); shown with unique counts and an ablation, then removed.","Docker image and a Kubernetes Job on local minikube."],
+   links:[[{en:"Dashboard",id:"Dashboard"},"https://creditlens-risk-evidence.streamlit.app/",1],[{en:"Repository",id:"Repositori"},"https://github.com/Agathahah/creditlens"]]},
+  {id:"pipeline", cats:["data","credit"], url:"github.com/Agathahah/credit-data-pipeline", img:"assets/shots/pipeline.png", date:"2025",
+   name:"Credit risk data pipeline", kind:{en:"Data engineering",id:"Data engineering"},
+   what:{en:"A five-stage ETL for 150,000 borrowers that produces the same metrics on PostgreSQL and SQLite.",
+         id:"ETL lima tahap untuk 150.000 peminjam yang menghasilkan metrik identik di PostgreSQL dan SQLite."},
+   nums:[[{en:"0.866",id:"0,866"},{en:"ROC-AUC (logistic 0.857)",id:"ROC-AUC (logistic 0,857)"}],[{en:"0.579",id:"0,579"},{en:"KS",id:"KS"}],["11",{en:"tests + CI",id:"test + CI"}]],
+   cover:{big:"0.579",cap:{en:"KS on the test set",id:"KS pada data test"},rows:[["ROC-AUC XGBoost",.866],["ROC-AUC logistic",.857],["PR-AUC XGBoost",.394],["PR-AUC logistic",.360]],hi:0,dec:3},
+   how:{en:["Early stopping uses a validation split, never the test set.","A World Bank macro join added nothing (the data has no dates); shown with unique counts and an ablation, then removed.","Docker image and a Kubernetes Job on local minikube."],
+        id:["Early stopping memakai data validasi, tidak pernah data test.","Penggabungan data makro World Bank tidak menambah informasi (data tidak memiliki tanggal); dibuktikan dengan unique count dan ablation, lalu dihapus.","Image Docker dan Kubernetes Job di minikube lokal."]},
    stack:"Python · PostgreSQL · XGBoost · Docker · Kubernetes · GitHub Actions",
-   links:[["Repository","https://github.com/Agathahah/credit-data-pipeline"]]},
-  {id:"nusa", name:"NusaCommerce", kind:"Analytics", date:"2025",
-   url:"public.tableau.com · NusaCommerce Executive Dashboard",
-   what:"SQL-first analysis of 20,848 orders from a Shopee seller, with RFM segmentation and a Tableau dashboard.",
-   nums:[["71%","of revenue from 88 locations"],["55%","of orders paid cash on delivery"],["13.6%","orders cancelled"]],
-   cover:{big:"71%",cap:"of revenue comes from 88 of 409 buyer locations",rows:[["88 champion locations",.71],["other 321 locations",.29]],hi:0},
-   how:["The export has no buyer ID, so the unit of analysis is buyer location, and the dashboard says so.","Refreshed October 2026: 17,768 completed orders, Rp1.05 billion revenue."],
+   links:[[{en:"Repository",id:"Repositori"},"https://github.com/Agathahah/credit-data-pipeline"]]},
+  {id:"nusa", cats:["data"], url:"public.tableau.com · NusaCommerce Executive Dashboard", img:"assets/shots/nusa.png", date:"2025",
+   name:"NusaCommerce", kind:{en:"Analytics",id:"Analitik"},
+   what:{en:"SQL-first analysis of 20,848 orders from a Shopee seller, with RFM segmentation and a Tableau dashboard.",
+         id:"Analisis berbasis SQL atas 20.848 pesanan dari seorang penjual Shopee, dengan segmentasi RFM dan dashboard Tableau."},
+   nums:[["71%",{en:"of revenue from 88 locations",id:"pendapatan dari 88 lokasi"}],["55%",{en:"of orders paid cash on delivery",id:"pesanan dibayar COD"}],[{en:"13.6%",id:"13,6%"},{en:"orders cancelled",id:"pesanan dibatalkan"}]],
+   cover:{big:"71%",cap:{en:"of revenue comes from 88 of 409 buyer locations",id:"pendapatan berasal dari 88 dari 409 lokasi pembeli"},rows:[["88 champion locations",.71],["other 321 locations",.29]],hi:0,pct:true},
+   how:{en:["The export has no buyer ID, so the unit of analysis is buyer location, and the dashboard says so.","Refreshed October 2026: 17,768 completed orders, Rp1.05 billion revenue."],
+        id:["Data ekspor tidak memiliki ID pembeli, sehingga unit analisisnya adalah lokasi pembeli, dan hal ini dinyatakan di dashboard.","Diperbarui Oktober 2026: 17.768 pesanan selesai dengan pendapatan Rp1,05 miliar."]},
    stack:"PostgreSQL · SQL · Python · Tableau · Looker Studio",
-   links:[["Tableau","https://public.tableau.com/app/profile/agatha.silalahi/viz/NusaCommerceExecutiveDashboard/Dashboard1",1],["Repository","https://github.com/Agathahah/shopee-indonesia-analytics"]]},
-  {id:"sigap", name:"SIGAP", kind:"Fraud", date:"in progress", wip:true, wide:true,
-   url:"SIGAP · fraud scoring + analyst copilot",
-   what:"Account-opening fraud scoring on the BAF dataset (Feedzai, NeurIPS 2022), built like a production system, with an analyst copilot. Results will appear here once measured.",
-   steps:[["Spark pipeline + star schema","built","done"],["Model, threshold at 5% FPR, release gate","in progress","prog"],["Fairness by age group, paper replication","in progress","prog"],["Monthly replay with drift and delayed labels","built","done"],["Analyst copilot (MCP + LangGraph) + evaluation","in progress","prog"],["Deploy and results","planned","plan"]],
+   links:[[{en:"Tableau",id:"Tableau"},"https://public.tableau.com/app/profile/agatha.silalahi/viz/NusaCommerceExecutiveDashboard/Dashboard1",1],[{en:"Repository",id:"Repositori"},"https://github.com/Agathahah/shopee-indonesia-analytics"]]},
+  {id:"sigap", wide:true, cats:["fraud","llm","data"], wip:true, url:"SIGAP · fraud scoring + analyst copilot", img:"assets/shots/sigap.png",
+   date:{en:"in progress",id:"dalam pengerjaan"}, name:"SIGAP", kind:{en:"Fraud",id:"Fraud"},
+   what:{en:"Account-opening fraud scoring on the BAF dataset (Feedzai, NeurIPS 2022), built like a production system, with a copilot for fraud analysts. Results will appear here once they are measured.",
+         id:"Skoring fraud pembukaan rekening pada dataset BAF (Feedzai, NeurIPS 2022) yang dibangun layaknya sistem produksi, dilengkapi copilot untuk analis fraud. Hasilnya akan ditampilkan di sini setelah diukur."},
+   steps:[[{en:"Spark pipeline + star schema",id:"Pipeline Spark + star schema"},"done"],[{en:"Model, threshold at 5% FPR, release gate",id:"Model, threshold pada FPR 5%, release gate"},"prog"],[{en:"Fairness by age group, paper replication",id:"Fairness per kelompok usia, replikasi paper"},"prog"],[{en:"Monthly replay with drift and delayed labels",id:"Replay bulanan dengan drift dan label tertunda"},"done"],[{en:"Analyst copilot (MCP + LangGraph) + evaluation",id:"Copilot analis (MCP + LangGraph) + evaluasi"},"prog"],[{en:"Deploy and results",id:"Deploy dan hasil"},"plan"]],
    stack:"PySpark · Airflow · MLflow · XGBoost · FastAPI · MCP · LangGraph",
-   links:[["The BAF paper","https://arxiv.org/abs/2211.13358"]]}
+   links:[[{en:"The BAF paper",id:"Paper BAF"},"https://arxiv.org/abs/2211.13358"]]}
 ];
+const STATUS = {done:{en:"built",id:"selesai"}, prog:{en:"in progress",id:"berjalan"}, plan:{en:"planned",id:"direncanakan"}};
+
+/* ---------- skills ---------- */
+const SK = [
+  [{en:"Modelling & evaluation",id:"Pemodelan & evaluasi"},[["XGBoost · LightGBM · scikit-learn"],[{en:"Credit risk metrics (KS, Gini, PSI)",id:"Metrik risiko kredit (KS, Gini, PSI)"}],[{en:"Calibration",id:"Kalibrasi"}],["SHAP"],[{en:"Time-based validation",id:"Validasi berbasis waktu"}],[{en:"Fairness checks",id:"Uji fairness"}],[{en:"Statistics & hypothesis testing",id:"Statistika & uji hipotesis"}],[{en:"Fraud detection",id:"Deteksi fraud"},1]]],
+  [{en:"NLP & LLM",id:"NLP & LLM"},[["RAG (BM25, embeddings, ChromaDB)"],[{en:"LLM evaluation with golden sets",id:"Evaluasi LLM dengan golden set"}],[{en:"Claude API & prompt design",id:"Claude API & desain prompt"}],[{en:"Sentiment & topic modelling",id:"Analisis sentimen & topic modelling"}],["BERT fine-tuning"],["MCP servers",1],["LangGraph agents",1]]],
+  [{en:"Data",id:"Data"},[["SQL (PostgreSQL, CTEs, window functions)"],["dbt"],[{en:"ETL pipelines",id:"Pipeline ETL"}],["BigQuery"],["Tableau · Looker Studio"],["PySpark",1],["Airflow",1]]],
+  [{en:"Engineering",id:"Engineering"},[["Python · R"],["FastAPI · Flask"],["Docker"],["pytest + GitHub Actions"],["Hugging Face Spaces · Streamlit"],["MLflow",1],[{en:"Kubernetes (local)",id:"Kubernetes (lokal)"},1]]]
+];
+
+/* ---------- rendering ---------- */
+let lang = "en", filter = "all";
+const $ = s => document.querySelector(s);
 const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const L = v => v == null ? "" : (typeof v === "object" && !Array.isArray(v) ? (v[lang] ?? v.en) : v);
+const num = (v, d) => lang === "id" ? v.toFixed(d).replace(".", ",") : v.toFixed(d);
+
 function coverSvg(c){
-  const max = c.max || 1, W = 520, rh = 26, H = c.rows.length * rh + 6, L = 150, hi = c.hi ?? c.rows.length - 1, dec = c.dec || 2;
-  let s = '<svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(c.cap) + '">';
-  c.rows.forEach((r, i) => { const y = i * rh + 4, w = (W - L - 50) * (r[1] / max);
-    s += '<text x="0" y="' + (y + 13) + '">' + esc(r[0]) + '</text><rect x="' + L + '" y="' + (y + 2) + '" width="' + (W - L - 50) + '" height="14" rx="7" fill="var(--line)"/><rect x="' + L + '" y="' + (y + 2) + '" width="' + w.toFixed(1) + '" height="14" rx="7" fill="' + (i === hi ? 'var(--accent)' : 'var(--ink)') + '" opacity="' + (i === hi ? 1 : .55) + '"/><text x="' + (W - 4) + '" y="' + (y + 13) + '" text-anchor="end">' + (r[1] < 1 && max === 1 && String(c.big).includes("%") ? Math.round(r[1] * 100) + "%" : r[1].toFixed(dec)) + '</text>'; });
-  if (c.gate){ const x = L + (W - L - 50) * (c.gate / max); s += '<line x1="' + x + '" x2="' + x + '" y1="0" y2="' + H + '" stroke="#c0392b" stroke-width="2"/><text x="' + (x + 4) + '" y="' + (H - 2) + '" style="fill:#c0392b">gate 0.25</text>'; }
+  const max = c.max || 1, W = 520, rh = 26, H = c.rows.length * rh + 6, X = 150, BW = W - X - 50, hi = c.hi ?? c.rows.length - 1, d = c.dec || 2;
+  let s = '<svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(L(c.cap)) + '">';
+  c.rows.forEach((r, i) => { const y = i * rh + 4, w = BW * (r[1] / max), val = c.pct ? Math.round(r[1] * 100) + "%" : num(r[1], d);
+    s += '<text x="0" y="' + (y + 13) + '">' + esc(r[0]) + '</text><rect x="' + X + '" y="' + (y + 2) + '" width="' + BW + '" height="14" rx="7" fill="var(--line)"/>' +
+         '<rect x="' + X + '" y="' + (y + 2) + '" width="' + w.toFixed(1) + '" height="14" rx="7" fill="' + (i === hi ? 'var(--accent)' : 'var(--ink)') + '" opacity="' + (i === hi ? 1 : .55) + '"/>' +
+         '<text x="' + (W - 4) + '" y="' + (y + 13) + '" text-anchor="end">' + val + '</text>'; });
+  if (c.gate){ const x = X + BW * (c.gate / max); s += '<line x1="' + x + '" x2="' + x + '" y1="0" y2="' + H + '" stroke="#c0392b" stroke-width="2"/><text x="' + (x + 4) + '" y="' + (H - 2) + '" style="fill:#c0392b">gate ' + num(c.gate, 2) + '</text>'; }
   return s + '</svg>';
 }
 function card(p){
-  const shotImg = p.img ? p.img : "assets/shots/" + p.id + ".png";
-  let cover = p.cover ? '<div class="cover"><div class="big">' + esc(p.cover.big) + '<small>' + esc(p.cover.cap) + '</small></div>' + coverSvg(p.cover) + '</div>'
-    : p.steps ? '<div class="cover"><div class="big">' + p.steps.filter(s => s[2] === "done").length + ' / ' + p.steps.length + '<small>milestones built; numbers appear when measured</small></div></div>' : '';
-  return '<article class="pj rv' + (p.wide ? ' wide' : '') + '" id="p-' + p.id + '">' +
-    '<div class="shot"><div class="bar"><i></i><i></i><i></i><span>' + esc(p.url) + '</span></div>' + cover +
-      '<img src="' + shotImg + '" alt="Screenshot of ' + esc(p.name) + '" loading="lazy"' + (p.contain ? ' class="contain"' : '') + ' onerror="this.remove()"></div>' +
-    '<div class="body"><div class="meta"><span>' + esc(p.kind) + '</span><span' + (p.wip ? ' class="wip"' : '') + '>' + esc(p.date) + '</span></div>' +
-      '<h3>' + esc(p.name) + '</h3><p class="what">' + esc(p.what) + '</p>' +
-      (p.nums ? '<div class="nums">' + p.nums.map(n => '<div>' + esc(n[0]) + '<small>' + esc(n[1]) + '</small></div>').join("") + '</div>' : '') +
-      (p.steps ? '<div class="steps">' + p.steps.map(s => '<div><span>' + esc(s[0]) + '</span><em class="' + s[2] + '">' + esc(s[1]) + '</em></div>').join("") + '</div>' : '') +
+  const big = p.cover ? (lang === "id" ? p.cover.big.replace(".", ",") : p.cover.big) : "";
+  const cover = p.cover ? '<div class="cover"><div class="big">' + esc(big) + '<small>' + esc(L(p.cover.cap)) + '</small></div>' + coverSvg(p.cover) + '</div>'
+    : p.steps ? '<div class="cover"><div class="big">' + p.steps.filter(s => s[1] === "done").length + ' / ' + p.steps.length + '<small>' + (lang === "id" ? "tahap selesai; angka ditampilkan setelah diukur" : "milestones built; numbers appear once measured") + '</small></div></div>' : '';
+  return '<article class="pj rv' + (p.wide ? ' wide' : '') + '" id="p-' + p.id + '" data-cats="' + p.cats.join(" ") + '">' +
+    '<div class="shot' + (p.steps ? ' short' : '') + '"><div class="bar"><i></i><i></i><i></i><span>' + esc(p.url) + '</span></div>' + cover +
+      '<button class="zoom" type="button" data-img="' + p.img + '" data-cap="' + esc(p.name) + '" aria-label="' + esc(UI[lang].zoom + ": " + p.name) + '"><img src="' + p.img + '" alt="' + esc(p.name) + '" loading="lazy"' + (p.contain ? ' class="contain"' : '') + ' onerror="var b=this.parentNode;b.nextElementSibling&&b.nextElementSibling.remove();b.remove()"></button><span class="hint">' + UI[lang].zoom + '</span></div>' +
+    '<div class="body"><div class="meta"><span>' + esc(L(p.kind)) + '</span><span' + (p.wip ? ' class="wip"' : '') + '>' + esc(L(p.date)) + '</span></div>' +
+      '<h3>' + esc(p.name) + '</h3><p class="what">' + esc(L(p.what)) + '</p>' +
+      (p.nums ? '<div class="nums">' + p.nums.map(n => '<div>' + esc(L(n[0])) + '<small>' + esc(L(n[1])) + '</small></div>').join("") + '</div>' : '') +
+      (p.steps ? '<div class="steps">' + p.steps.map(s => '<div><span>' + esc(L(s[0])) + '</span><em class="' + s[1] + '">' + esc(STATUS[s[1]][lang]) + '</em></div>').join("") + '</div>' : '') +
       '<div class="stack">' + esc(p.stack) + '</div>' +
-      (p.how ? '<details class="how"><summary>How it was measured</summary><ul>' + p.how.map(h => '<li>' + esc(h) + '</li>').join("") + '</ul>' + (p.extra ? '<div class="extra"><img src="' + p.extra + '" alt="' + esc(p.extraAlt) + '" loading="lazy"></div>' : '') + '</details>' : '') +
-      '<div class="links">' + p.links.map(l => '<a class="btn sm' + (l[2] ? ' pri' : '') + '" href="' + l[1] + '" target="_blank" rel="noopener">' + esc(l[0]) + ' ↗</a>').join("") + '</div>' +
+      (p.how ? '<details class="how"><summary>' + UI[lang].how + '</summary><ul>' + L(p.how).map(h => '<li>' + esc(h) + '</li>').join("") + '</ul>' +
+        (p.extra ? '<button class="extra" type="button" data-img="' + p.extra + '" data-cap="' + esc(L(p.extraAlt)) + '"><img src="' + p.extra + '" alt="' + esc(L(p.extraAlt)) + '" loading="lazy"></button>' : '') + '</details>' : '') +
+      '<div class="links">' + p.links.map(l => '<a class="btn sm' + (l[2] ? ' pri' : '') + '" href="' + l[1] + '" target="_blank" rel="noopener">' + esc(L(l[0])) + ' ↗</a>').join("") + '</div>' +
     '</div></article>';
 }
-document.getElementById("plist").innerHTML = P.map(card).join("");
+function renderProjects(){
+  const open = [...document.querySelectorAll("details.how[open]")].map(d => d.closest(".pj").id);
+  $("#plist").innerHTML = P.map(card).join("");
+  open.forEach(id => { const d = document.querySelector("#" + id + " details.how"); if (d) d.open = true; });
+  $("#filters").innerHTML = [["all", UI[lang].all, P.length]].concat(CATS.map(c => [c[0], c[1][lang], P.filter(p => p.cats.includes(c[0])).length]))
+    .map(f => '<button type="button" data-f="' + f[0] + '" aria-pressed="' + (filter === f[0]) + '">' + esc(f[1]) + '<span>' + f[2] + '</span></button>').join("");
+  applyFilter(); observe(document.querySelectorAll("#plist .rv"));
+}
+function applyFilter(){
+  document.querySelectorAll("#plist .pj").forEach(el => { el.hidden = !(filter === "all" || el.dataset.cats.split(" ").includes(filter)); el.classList.toggle("wide", filter === "all" && !!P.find(p => "p-" + p.id === el.id).wide); });
+  document.querySelectorAll("#filters button").forEach(b => b.setAttribute("aria-pressed", b.dataset.f === filter));
+}
+function renderSkills(){
+  $("#skills-list").innerHTML = SK.map(g => '<div class="card rv in"><h3>' + esc(L(g[0])) + '</h3><div class="chips">' + g[1].map(c => '<span class="chip' + (c[1] ? ' lrn' : '') + '">' + esc(L(c[0])) + '</span>').join("") + '</div></div>').join("");
+}
 
-/* reveal on scroll; anything already on screen shows immediately */
-const els = document.querySelectorAll(".rv");
-if ("IntersectionObserver" in window){
-  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } }), {rootMargin:"0px 0px -6% 0px"});
-  els.forEach(el => io.observe(el));
-  setTimeout(() => els.forEach(el => { const r = el.getBoundingClientRect(); if (r.top < innerHeight) el.classList.add("in"); }), 60);
-} else els.forEach(el => el.classList.add("in"));
+/* ---------- language ---------- */
+const EN = {};
+document.querySelectorAll("[data-t]").forEach(el => { if (!(el.dataset.t in EN)) EN[el.dataset.t] = el.innerHTML; });
+function setLang(l, save){
+  lang = l === "id" ? "id" : "en";
+  document.documentElement.lang = lang;
+  document.querySelectorAll("[data-t]").forEach(el => { el.innerHTML = lang === "id" ? (ID[el.dataset.t] ?? EN[el.dataset.t]) : EN[el.dataset.t]; });
+  document.querySelectorAll(".lang button").forEach(b => b.setAttribute("aria-pressed", b.dataset.lang === lang));
+  $("#totop").setAttribute("aria-label", UI[lang].top);
+  renderProjects(); renderSkills();
+  if (save){ try { localStorage.setItem("lang", lang); } catch(e){} try { const u = new URL(location.href); u.searchParams.set("lang", lang); history.replaceState(null, "", u); } catch(e){} }
+}
+document.querySelectorAll(".lang button").forEach(b => b.onclick = () => setLang(b.dataset.lang, true));
+$("#filters").addEventListener("click", e => { const b = e.target.closest("button[data-f]"); if (!b) return; filter = b.dataset.f; applyFilter(); });
 
-/* nav state */
-const nav = document.getElementById("nav"), links = [...document.querySelectorAll(".nav nav a")];
-const secs = links.map(a => document.querySelector(a.getAttribute("href")));
-addEventListener("scroll", () => {
+/* ---------- screenshot viewer ---------- */
+const viewer = $("#viewer");
+document.addEventListener("click", e => {
+  const b = e.target.closest("button.zoom, button.extra"); if (!b) return;
+  $("#vimg").src = b.dataset.img; $("#vimg").alt = b.dataset.cap; $("#vcap").textContent = b.dataset.cap;
+  if (viewer.showModal) viewer.showModal(); else window.open(b.dataset.img, "_blank");
+});
+$("#vclose").onclick = () => viewer.close();
+viewer.addEventListener("click", e => { if (e.target === viewer) viewer.close(); });
+
+/* ---------- reveal, nav, progress ---------- */
+let io = null;
+function observe(els){
+  if (!("IntersectionObserver" in window)){ els.forEach(el => el.classList.add("in")); return; }
+  if (!io) io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } }), {rootMargin:"0px 0px -6% 0px"});
+  els.forEach(el => { const r = el.getBoundingClientRect(); if (r.top < innerHeight) el.classList.add("in"); else io.observe(el); });
+}
+const nav = $("#nav"), links = [...document.querySelectorAll(".nav nav a")], secs = links.map(a => document.querySelector(a.getAttribute("href")));
+function onScroll(){
   nav.classList.toggle("solid", scrollY > 10);
-  let cur = null; secs.forEach((s, i) => { if (s && s.getBoundingClientRect().top < 120) cur = i; });
+  const h = document.documentElement.scrollHeight - innerHeight; $("#progress").style.width = (h > 0 ? scrollY / h * 100 : 0) + "%";
+  let cur = null; secs.forEach((s, i) => { if (s && s.getBoundingClientRect().top < 140) cur = i; });
   links.forEach((a, i) => a.classList.toggle("on", i === cur));
-}, {passive:true});
+  $("#totop").classList.toggle("show", scrollY > 900);
+}
+addEventListener("scroll", onScroll, {passive:true});
+$("#totop").onclick = () => scrollTo({top:0, behavior:"smooth"});
 
-/* copy email */
-document.getElementById("copy").onclick = async e => {
-  const t = document.getElementById("em").textContent;
-  try { await navigator.clipboard.writeText(t); e.target.textContent = "Copied"; }
-  catch(_) { const r = document.createRange(); r.selectNodeContents(document.getElementById("em")); const s = getSelection(); s.removeAllRanges(); s.addRange(r); e.target.textContent = "Selected, press Ctrl/Cmd+C"; }
-  setTimeout(() => e.target.textContent = "Copy email", 2200);
+/* ---------- copy email ---------- */
+$("#copy").onclick = async e => {
+  const t = $("#em").textContent;
+  try { await navigator.clipboard.writeText(t); e.target.textContent = UI[lang].copied; }
+  catch(_) { const r = document.createRange(); r.selectNodeContents($("#em")); const s = getSelection(); s.removeAllRanges(); s.addRange(r); e.target.textContent = UI[lang].select; }
+  setTimeout(() => e.target.textContent = lang === "id" ? ID["contact.copy"] : EN["contact.copy"], 2200);
 };
 
-/* show the CV button only when the PDF is in the repository */
-if (location.protocol.startsWith("http")) fetch("assets/Agatha-Silalahi-CV.pdf", {method:"HEAD"}).then(r => { if (r.ok) document.getElementById("cvbtn").hidden = false; }).catch(() => {});
+/* ---------- CV button appears only when the PDF is in the repository ---------- */
+if (location.protocol.startsWith("http")) fetch("assets/Agatha-Silalahi-CV.pdf", {method:"HEAD"}).then(r => { if (r.ok) $("#cvbtn").hidden = false; }).catch(() => {});
+
+/* ---------- start ---------- */
+let start = "en";
+try { const q = new URLSearchParams(location.search).get("lang"); const s = localStorage.getItem("lang");
+  start = q || s || ((navigator.language || "").toLowerCase().startsWith("id") ? "id" : "en"); } catch(e){}
+setLang(start, false);
+observe(document.querySelectorAll(".rv"));
+onScroll();
 </script>
 </body>
 </html>

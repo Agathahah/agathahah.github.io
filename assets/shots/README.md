@@ -1,19 +1,17 @@
 # Project screenshots
 
-Each project card shows a screenshot from this folder when the file exists.
-Until then it shows a cover with the project's key number.
+Simpan screenshot di folder ini (assets/shots/) dengan nama persis seperti di tabel.
+Kartu project otomatis memakai gambar ini; kalau belum ada, kartu menampilkan angka utama project.
 
-| File | What to capture |
-|---|---|
-| finsight.png | FinSight live demo on Hugging Face, after asking a question (answer + page citations visible) |
-| creditlens.png | CreditLens Streamlit dashboard, first screen |
-| nusa.png | NusaCommerce Tableau dashboard |
-| pipeline.png | (optional) terminal run or architecture diagram |
-| sigap.png | (later) SIGAP dashboard or API docs page |
-| ews-evaluation.png | already included (ROC, precision-recall, calibration from the repository) |
+| Simpan sebagai | Buka link ini | Yang perlu terlihat |
+|---|---|---|
+| finsight.png | https://huggingface.co/spaces/Agatha1911/finsight-idx | Ajukan satu pertanyaan contoh dulu supaya jawaban dan sitasi halaman ikut terlihat |
+| creditlens.png | https://creditlens-risk-evidence.streamlit.app/ | Layar pertama dashboard (angka dan grafik utama) |
+| nusa.png | https://public.tableau.com/app/profile/agatha.silalahi/viz/NusaCommerceExecutiveDashboard/Dashboard1 | Dashboard penuh, tunggu sampai semua grafik selesai dimuat |
+| pipeline.png (opsional) | https://github.com/Agathahah/credit-data-pipeline | Halaman README atau hasil run di terminal |
+| ews-evaluation.png | sudah ada | grafik ROC, precision-recall, kalibrasi dari repo |
 
-How to take a clean screenshot on a Mac:
-1. Open the app in the browser at full width (about 1440 px) and zoom to 100%.
-2. Press Cmd+Shift+4, then Space, then click the browser window. Or Cmd+Shift+4 and drag around the app only.
-3. Rename the file (for example `finsight.png`) and put it in `assets/shots/`.
-Wide images (16:9) look best. The top of the image is what shows in the card.
+Cara screenshot di Mac:
+1. Buka link di browser, layar penuh, zoom 100%.
+2. Tekan Cmd+Shift+4, lalu tarik kotak di area aplikasinya saja (tanpa address bar), kira-kira rasio 16:9.
+3. File tersimpan di Desktop. Ganti namanya sesuai tabel, lalu pindahkan ke folder ini.
