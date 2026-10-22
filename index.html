@@ -200,9 +200,10 @@ details.how summary::before{content:"+";width:20px;height:20px;border-radius:6px
 details.how[open] summary::before{content:"–"}
 details.how ul{margin:10px 0 0;padding-left:18px;display:grid;gap:6px;font-size:14.5px;color:var(--muted)}
 details.how .extra{all:unset;display:block;margin-top:12px;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff;cursor:zoom-in}
-.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:6px;margin-top:4px}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:6px;margin-top:4px}
 .steps div{display:flex;justify-content:space-between;gap:12px;font-size:14px;border:1px solid var(--line);border-radius:10px;padding:8px 12px}
 .steps em{font-style:normal;font-family:var(--f-m);font-size:11.5px;padding:1px 8px;border-radius:6px;white-space:nowrap;align-self:center}
+.adds{margin-top:6px}.adds b{font-size:13.5px}.adds .chips{margin-top:8px}
 .steps .done{background:var(--ok-soft);color:var(--ok)}.steps .prog{background:var(--accent-soft);color:var(--accent-ink)}.steps .plan{background:var(--bg);color:var(--muted)}
 .links{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto;padding-top:8px}
 .earlier{margin-top:22px;color:var(--muted);font-size:14.5px}
@@ -511,11 +512,22 @@ const P = [
    stack:"PostgreSQL · SQL · Python · Tableau · Looker Studio",
    links:[[{en:"Tableau",id:"Tableau"},"https://public.tableau.com/app/profile/agatha.silalahi/viz/NusaCommerceExecutiveDashboard/Dashboard1",1],[{en:"Looker Studio",id:"Looker Studio"},"https://lookerstudio.google.com/reporting/617f29b4-3925-4943-8729-68fd4bfff227",1],[{en:"Repository",id:"Repositori"},"https://github.com/Agathahah/shopee-indonesia-analytics"]]},
   {id:"sigap", wide:true, cats:["fraud","llm","data"], wip:true, url:"SIGAP · fraud scoring + analyst copilot", img:"assets/shots/sigap.png",
-   date:{en:"in progress",id:"dalam pengerjaan"}, name:"SIGAP", kind:{en:"Fraud",id:"Fraud"},
-   what:{en:"Account-opening fraud scoring on the BAF dataset (Feedzai, NeurIPS 2022), built like a production system, with a copilot for fraud analysts. Results will appear here once they are measured.",
-         id:"Skoring fraud pembukaan rekening pada dataset BAF (Feedzai, NeurIPS 2022) yang dibangun layaknya sistem produksi, dilengkapi copilot untuk analis fraud. Hasilnya akan ditampilkan di sini setelah diukur."},
-   steps:[[{en:"Spark pipeline + star schema",id:"Pipeline Spark + star schema"},"done"],[{en:"Model, threshold at 5% FPR, release gate",id:"Model, threshold pada FPR 5%, release gate"},"prog"],[{en:"Fairness by age group, paper replication",id:"Fairness per kelompok usia, replikasi paper"},"prog"],[{en:"Monthly replay with drift and delayed labels",id:"Replay bulanan dengan drift dan label tertunda"},"done"],[{en:"Analyst copilot (MCP + LangGraph) + evaluation",id:"Copilot analis (MCP + LangGraph) + evaluasi"},"prog"],[{en:"Deploy and results",id:"Deploy dan hasil"},"plan"]],
-   stack:"PySpark · Airflow · MLflow · XGBoost · FastAPI · MCP · LangGraph",
+   date:{en:"in progress · 21 Oct – 19 Nov 2026",id:"dalam pengerjaan · 21 Okt – 19 Nov 2026"}, name:"SIGAP", kind:{en:"Fraud · MLOps · AI agent",id:"Fraud · MLOps · AI agent"},
+   what:{en:"SIGAP scores online bank-account applications for fraud and gives fraud analysts a copilot that explains each score. It uses the Bank Account Fraud dataset (Feedzai, NeurIPS 2022: 1 million applications over 8 months) and follows the paper's protocol, so results can be compared with published ones. It is built like a production system: a data pipeline, a model released only through a gate, monthly monitoring, an API and an AI assistant with guardrails. Results will appear here once they are measured.",
+         id:"SIGAP menilai risiko fraud pada pengajuan pembukaan rekening bank secara online dan menyediakan copilot yang menjelaskan setiap skor kepada analis fraud. Proyek ini memakai dataset Bank Account Fraud (Feedzai, NeurIPS 2022: 1 juta pengajuan selama 8 bulan) dan mengikuti protokol paper tersebut, sehingga hasilnya dapat dibandingkan dengan hasil yang telah dipublikasikan. Proyek dibangun layaknya sistem produksi: pipeline data, model yang hanya dirilis melalui release gate, pemantauan bulanan, API, dan asisten AI dengan guardrail. Hasilnya akan ditampilkan di sini setelah diukur."},
+   steps:[
+     [{en:"Skeleton running end to end on synthetic data (pipeline → model → API → copilot), 39 tests",id:"Kerangka sistem berjalan dari ujung ke ujung pada data sintetis (pipeline → model → API → copilot), 39 test"},"done"],
+     [{en:"Week 1 · Data quality rules and leakage-safe features in PySpark (bronze, silver, gold, star schema)",id:"Minggu 1 · Aturan kualitas data dan fitur bebas leakage di PySpark (bronze, silver, gold, star schema)"},"prog"],
+     [{en:"Week 2 · XGBoost vs logistic baseline, threshold at 5% FPR, release gate, MLflow tracking",id:"Minggu 2 · XGBoost vs baseline logistic, threshold pada FPR 5%, release gate, pencatatan MLflow"},"plan"],
+     [{en:"Week 2 · Fairness: false-positive-rate parity by age group, replication on the 6 BAF variants",id:"Minggu 2 · Fairness: kesetaraan false positive rate antar kelompok usia, replikasi pada 6 varian BAF"},"plan"],
+     [{en:"Week 3 · Monthly replay with PSI drift and delayed labels, orchestrated with Airflow",id:"Minggu 3 · Replay bulanan dengan drift PSI dan label tertunda, diorkestrasi dengan Airflow"},"plan"],
+     [{en:"Week 3 · Analyst copilot: MCP server + LangGraph agent, injection and grounding guardrails, golden-set evaluation",id:"Minggu 3 · Copilot analis: MCP server + agent LangGraph, guardrail injection dan grounding, evaluasi golden set"},"plan"],
+     [{en:"Week 4 · FastAPI service in Docker, public demo on synthetic data, model card and results",id:"Minggu 4 · Layanan FastAPI di Docker, demo publik dengan data sintetis, model card, dan hasil"},"plan"]],
+   how:{en:["Main metric: true positive rate at a 5% false positive rate on the held-out test months (6–7), as in the BAF paper, with PR-AUC alongside.","Release gate written before training: minimum TPR and PR-AUC, and a test FPR that stays close to the 5% target.","Fairness: ratio of false positive rates between applicants aged 50+ and under 50.","Monitoring: PSI per feature and per month, alert rate, and TPR/FPR once labels arrive.","Copilot: a golden set of analyst questions, checked for correct tool use, grounded numbers and refusal of prompt injection."],
+        id:["Metrik utama: true positive rate pada false positive rate 5% di bulan uji (6–7), sesuai paper BAF, dengan PR-AUC sebagai pendamping.","Release gate ditetapkan sebelum pelatihan: batas minimum TPR dan PR-AUC, serta FPR uji yang tetap dekat dengan target 5%.","Fairness: rasio false positive rate antara pemohon berusia 50+ dan di bawah 50 tahun.","Pemantauan: PSI per fitur dan per bulan, alert rate, serta TPR/FPR setelah label tersedia.","Copilot: golden set berisi pertanyaan analis, diperiksa ketepatan pemakaian tool, angka yang ter-grounding, dan penolakan prompt injection."]},
+   adds:{en:"New skills this project adds",id:"Keahlian baru dari proyek ini"},
+   addsList:["PySpark","Airflow","MLflow","Star schema","Fraud detection","Fairness evaluation","Drift monitoring (PSI)","FastAPI + Docker","MCP","LangGraph agents","LLM guardrails"],
+   stack:"PySpark · Airflow · MLflow · XGBoost · FastAPI · Docker · MCP · LangGraph",
    links:[[{en:"The BAF paper",id:"Paper BAF"},"https://arxiv.org/abs/2211.13358"]]}
 ];
 const STATUS = {done:{en:"built",id:"selesai"}, prog:{en:"in progress",id:"berjalan"}, plan:{en:"planned",id:"direncanakan"}};
@@ -548,7 +560,7 @@ function coverSvg(c){
 function card(p){
   const big = p.cover ? (lang === "id" ? p.cover.big.replace(".", ",") : p.cover.big) : "";
   const cover = p.cover ? '<div class="cover"><div class="big">' + esc(big) + '<small>' + esc(L(p.cover.cap)) + '</small></div>' + coverSvg(p.cover) + '</div>'
-    : p.steps ? '<div class="cover"><div class="big">' + p.steps.filter(s => s[1] === "done").length + ' / ' + p.steps.length + '<small>' + (lang === "id" ? "tahap selesai; angka ditampilkan setelah diukur" : "milestones built; numbers appear once measured") + '</small></div></div>' : '';
+    : p.steps ? '<div class="cover"><div class="big">' + '4' + (lang === "id" ? " minggu" : " weeks") + '<small>' + (lang === "id" ? "21 Oktober – 19 November 2026; angka ditampilkan setelah diukur" : "21 October – 19 November 2026; numbers appear once measured") + '</small></div></div>' : '';
   return '<article class="pj rv' + (p.wide ? ' wide' : '') + (p.side ? ' side' : '') + '" id="p-' + p.id + '" data-cats="' + p.cats.join(" ") + '">' +
     '<div class="shot' + (p.steps ? ' short' : '') + '"><div class="bar"><i></i><i></i><i></i><span>' + esc(p.url) + '</span></div>' + cover +
       '<button class="zoom" type="button" data-img="' + p.img + '" data-cap="' + esc(p.name) + '" aria-label="' + esc(UI[lang].zoom + ": " + p.name) + '"><img src="' + p.img + '" alt="' + esc(p.name) + '"' + (p.contain ? ' class="contain"' : '') + ' onload="this.closest(\'.shot\').classList.add(\'has-img\')" onerror="var b=this.parentNode;b.nextElementSibling&&b.nextElementSibling.remove();b.remove()"></button><span class="hint">' + UI[lang].zoom + '</span></div>' +
@@ -556,8 +568,9 @@ function card(p){
       '<h3>' + esc(p.name) + '</h3><p class="what">' + esc(L(p.what)) + '</p>' +
       (p.nums ? '<div class="nums">' + p.nums.map(n => '<div>' + esc(L(n[0])) + '<small>' + esc(L(n[1])) + '</small></div>').join("") + '</div>' : '') +
       (p.steps ? '<div class="steps">' + p.steps.map(s => '<div><span>' + esc(L(s[0])) + '</span><em class="' + s[1] + '">' + esc(STATUS[s[1]][lang]) + '</em></div>').join("") + '</div>' : '') +
+      (p.addsList ? '<div class="adds"><b>' + esc(L(p.adds)) + '</b><div class="chips">' + p.addsList.map(c => '<span class="chip">' + esc(c) + '</span>').join("") + '</div></div>' : '') +
       '<div class="stack">' + esc(p.stack) + '</div>' +
-      (p.how ? '<details class="how"><summary>' + UI[lang].how + '</summary><ul>' + L(p.how).map(h => '<li>' + esc(h) + '</li>').join("") + '</ul>' +
+      (p.how ? '<details class="how"><summary>' + (p.wip ? (lang === "id" ? "Cara pengukurannya nanti" : "How it will be measured") : UI[lang].how) + '</summary><ul>' + L(p.how).map(h => '<li>' + esc(h) + '</li>').join("") + '</ul>' +
         (p.extra ? '<button class="extra" type="button" data-img="' + p.extra + '" data-cap="' + esc(L(p.extraAlt)) + '"><img src="' + p.extra + '" alt="' + esc(L(p.extraAlt)) + '" loading="lazy"></button>' : '') + '</details>' : '') +
       '<div class="links">' + p.links.map(l => '<a class="btn sm' + (l[2] ? ' pri' : '') + '" href="' + l[1] + '" target="_blank" rel="noopener">' + esc(L(l[0])) + ' ↗</a>').join("") + '</div>' +
     '</div></article>';
